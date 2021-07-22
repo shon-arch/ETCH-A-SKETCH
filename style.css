@@ -1,0 +1,22 @@
+body{
+    text-align: center;
+}
+
+.div-color{
+    background-color: white;
+    border: 1px black solid;
+}
+
+.root-div{
+    margin: 30px; 
+    text-align: center;
+}
+
+.pdiv{
+    justify-content: center;
+}
+
+
+.color-changer{
+    background-color: black;
+}

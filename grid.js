@@ -1,12 +1,12 @@
 const div = document.querySelector(".root-div"); 
 
-const colorPicker = document.querySelector("input"); 
-
 let currentColor = ["black"]; 
 
 let x=5; 
 
 createGrid(); 
+
+const buttons = document.querySelectorAll("button"); 
 
 
 document.querySelector("#clear").addEventListener("click",(e)=>{
@@ -14,44 +14,53 @@ document.querySelector("#clear").addEventListener("click",(e)=>{
     createGrid()
 })
 
-document.querySelector("#size").addEventListener("change",(e)=>{
-    x=e.target.value; 
-    div.textContent=''; 
-    createGrid(); 
-})
+function clearColor(){
+    buttons.forEach(function (button){
+        button.classList.remove("button-clicked"); 
+    }); 
+}
 
 document.querySelector("#erase").addEventListener("click",(e)=>{
+            clearColor();
+            e.target.classList.add("button-clicked"); 
             currentColor=["white"]; 
 })
 
 document.querySelector("#draw").addEventListener("click",(e)=>{
-    currentColor=["black"]; 
+    clearColor(); 
+    e.target.classList.add("button-clicked"); 
+    currentColor= [document.querySelector(".color-picker").value];
 })
 
 document.querySelector("#random").addEventListener("click",(e)=>{
-    let colors = ["#fff100 ","#ff8c00 ","#e81123","#ec008c ","#68217a ","#00188f ","#00bcf2 ",
-                    "#00b294 ","#009e49 "]; 
-    currentColor = colors; 
+    clearColor(); 
+    e.target.classList.add("button-clicked"); 
+    currentColor = ["#5d8aa8", "#e32636", "#efdecd", "#ffbf00", "#a4c639", "#cd9575", "#fe6f5e","#8a2be2",
+    "#006a4e"]; 
+})
+
+document.querySelector(".color-picker").addEventListener("change", (e)=>{clearColor(); 
+    currentColor = [document.querySelector(".color-picker").value]; 
 })
 
 function  createGrid(){
 for(let j=0;j<x;++j){
     let pdiv = document.createElement("div"); 
-    pdiv.style.display = "flex"; 
     pdiv.classList.add("parent-div"); 
     for(let i=0;i<x; ++i){
         let newDiv = document.createElement("div"); 
-        let newpad = Math.floor((280)/x); 
-        newDiv.style.padding = newpad+"px"; 
-        newDiv.classList.add("div-color")
-        newDiv.addEventListener("mouseenter",(e)=>{
-            newDiv.style["background-color"] = currentColor[Math.floor(Math.random()*currentColor.length)]; 
+        newDiv.classList.add("small-div")
+        newDiv.addEventListener("mouseover",(e)=>{
+            if(e.buttons == 0)return; 
+            newDiv.style["background-color"] = currentColor[ Math.floor(Math.random()*currentColor.length)]; 
+        }) 
+        newDiv.addEventListener("click",(e)=>{
+            newDiv.style["background-color"] = currentColor[ Math.floor(Math.random()*currentColor.length)]; 
         }) 
         pdiv.appendChild(newDiv); 
         
-    }
-    pdiv.classList.add("pdiv"); 
-        div.appendChild(pdiv); 
+    } 
+    div.appendChild(pdiv); 
 }
 }
 

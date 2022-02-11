@@ -45,7 +45,9 @@ document.querySelector("#random").addEventListener("click",(e)=>{
     "#006a4e"]; 
 })
 
-document.querySelector(".color-picker").addEventListener("change", (e)=>{clearColor(); 
+document.querySelector(".color-picker").addEventListener("change", (e)=>{
+    clearColor(); 
+    document.querySelector("#draw").classList.add("button-clicked"); 
     currentColor = [document.querySelector(".color-picker").value]; 
 })
 

@@ -2,9 +2,15 @@ const div = document.querySelector(".root-div");
 
 let currentColor = ["black"]; 
 
-let x=5; 
+let x=10; 
 
-createGrid(); 
+createGrid();
+
+function setDim(range){
+    x = range; 
+    div.textContent = ''; 
+    createGrid(); 
+}
 
 const buttons = document.querySelectorAll("button"); 
 

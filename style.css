@@ -42,7 +42,8 @@ button{
 
 .root-div{
     margin: 30px;
-    border: 1px solid black; 
+    border-top: 1px solid black; 
+    border-right: 1px solid black; 
     height: 700px;
     width: 700px;
     flex-shrink: 0;
@@ -83,6 +84,8 @@ button{
 
 .small-div {
     flex : 1;
+    border-left : 1px solid black; 
+    border-bottom : 1px solid black; 
 }
 
 
